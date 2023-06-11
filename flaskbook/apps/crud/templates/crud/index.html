@@ -1,12 +1,22 @@
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" href="{{ url_for('crud.static', filename='style.css') }}" />
-        <title>CRUD</title>
-    </head>
-
-    <body>
-        <p class="crud">CRUD</p>
-    </body>
-</html>
+{% extends "crud/base.html" %}
+{% block title %}users{% endblock %}
+{% block content %}
+<h2>users</h2>
+<a href="{{ url_for('crud.create_user') }}">new user</a>
+<table>
+    <tr>
+        <th>userid</th>
+        <th>username</th>
+        <th>mail</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+        <td>
+            <a href="{{ url_for('crud.edit_user', user_id=user.id) }}">{{ user.id }}</a>
+        </td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
