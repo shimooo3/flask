@@ -130,6 +130,9 @@ def search():
     
     return render_template("detector/index.html", user_images=filtered_user_images, user_image_tag_dict=user_image_tag_dict, delete_form=delete_form, detector_form=detector_form)
 
+@dt.errorhandler(404)
+def page_not_found(e):
+    return render_template("detector/404.html"), 404
 
 def make_color(labels):
     # 枠線の色をランダムに決定
