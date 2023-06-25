@@ -114,3 +114,6 @@ config = {
     "testeing": TestConfig,
     "local": LocalConfig
 }
+
+class TestingConfig(BaseConfig):
+    UPLOAD_FOLDER = str(Path(basedir, "tests", "detector", "images"))
